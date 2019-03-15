@@ -1,0 +1,19 @@
+@model ETB310_LandlordV2.Models.LogInViewModel
+
+@{
+    ViewBag.Title = "Startsida";
+}
+
+<h1>Logga in</h1>
+
+@using (Html.BeginForm())
+{
+    <div>Username:</div>
+    <div>@Html.TextBoxFor(m => m.UserName)</div>
+    <div>Password:</div>
+    <div>@Html.PasswordFor(m => m.Password)</div>
+    <input type="submit" value="Log in" />
+    <div>
+        @Html.ValidationSummary()
+    </div>
+}

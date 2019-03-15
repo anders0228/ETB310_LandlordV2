@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ETB310_LandlordV2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,16 +14,35 @@ namespace ETB310_LandlordV2.Controllers
             return View();
         }
 
-        public ActionResult About()
+        [HttpGet]
+        public ActionResult Login()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        [HttpPost]
+        public ActionResult Login(LogInViewModel login)
         {
-            ViewBag.Message = "Your contact page.";
+            if (login.UserName == null || login.Password == null)
+            {
+                ModelState.AddModelError("", "Fill in the forms");
+                return View();
+            }
+            bool validUser = false;
+
+            validUser = System.Web.Security.FormsAuthentication.Authenticate(login.UserName, login.Password);
+
+            if (validUser)
+            {
+                System.Web.Security.FormsAuthentication.RedirectFromLoginPage(login.UserName, false);
+            }
+            ModelState.AddModelError("", "Login not accepted");
+            return View();
+        }
+        [Authorize]
+        public ActionResult About()
+        {
+            ViewBag.Message = "This page is a placeholder.";
 
             return View();
         }
