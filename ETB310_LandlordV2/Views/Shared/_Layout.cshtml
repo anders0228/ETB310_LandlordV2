@@ -26,7 +26,7 @@
                     @{
                         if (@User.Identity.Name != "")
                         {
-                            <li>@Html.ActionLink($"(Inloggad som {@User.Identity.Name}) Logga ut", "Logout", "Home")</li>
+                            <li>@Html.ActionLink("(Inloggad som " + @User.Identity.Name + ") Logga ut", "Logout", "Home")</li>
                         }
                     }
                 </ul>

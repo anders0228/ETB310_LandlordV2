@@ -65,7 +65,7 @@ namespace ETB310_LandlordV2.Controllers
         [Authorize]
         public ActionResult AddServiceCasePost(ServiceCaseViewModel vm)
         {
-            if (ModelState.IsValid)
+            if (ModelState["NewPostMessage"].Errors.Count == 0)
             {
                 var client = new ServiceReference1.Service1Client();
                 var post = new ServiceReference1.ServiceCasePost
