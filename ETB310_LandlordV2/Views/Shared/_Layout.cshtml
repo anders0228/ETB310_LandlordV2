@@ -23,7 +23,6 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Visa inkoma ärenden", "Index", "EditServiceCase")</li>
                     <li>@Html.ActionLink("Skapa nytt ärende", "Index", "NewServiceCase")</li>
-                    <li>@Html.ActionLink("Om", "About", "Home")</li>
                     @{
                         if (@User.Identity.Name != "")
                         {
@@ -38,7 +37,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - MVC1, Team Tenant</p>
+            <p>&copy; @DateTime.Now.Year - Femskägg</p>
         </footer>
     </div>
 

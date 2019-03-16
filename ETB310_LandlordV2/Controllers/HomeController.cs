@@ -41,12 +41,6 @@ namespace ETB310_LandlordV2.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "";
-            return View();
-        }
-
         [Authorize]
         public ActionResult LogOut()
         {

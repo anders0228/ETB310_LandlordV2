@@ -1,4 +1,5 @@
-﻿using ETB310_LandlordV2.Models;
+﻿using ETB310_LandlordV2.MailKit;
+using ETB310_LandlordV2.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -12,18 +13,22 @@ namespace ETB310_LandlordV2.Controllers
 {
     public class NewServiceCaseController : Controller
     {
+        [Authorize]
         public ActionResult Index()
         {
             var vm = new ServiceCaseViewModel();
             return View("RegisterServiceCase", vm);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult EditServiceCase(ServiceCaseViewModel vm)
         {
             //ModelState.AddModelError("edit","");
             return View("RegisterServiceCase", vm);
         }
+
+        [Authorize]
         [HttpPost]
         public ActionResult RegisterServiceCase(ServiceCaseViewModel vm)
         {
@@ -100,6 +105,21 @@ namespace ETB310_LandlordV2.Controllers
             // https://blogs.msdn.microsoft.com/simonince/2010/05/05/asp-net-mvcs-html-helpers-render-the-wrong-value/
             ModelState.Clear();
             return View("RegistrationError", vm);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult EmailRegisterServiceCase(ServiceCaseViewModel vm)
+        {
+            var vmResult = new RegistrationConfirmationViewModel
+            {
+                Name = vm.Name,
+                FlatNr = vm.FlatNr.ToString(),
+                ContactEmail = vm.ContactEmail,
+                Message = vm.NewPostMessage,
+            };
+            SendMailSimple.SendServiceCase(vmResult);
+            return View("EmailRegistrationConfirmation", vmResult);
         }
 
         private bool ValidateEqual(string value1, string value2, List<ErrorLogItem> errorLog)

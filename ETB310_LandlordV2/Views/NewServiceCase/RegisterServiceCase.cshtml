@@ -8,7 +8,7 @@
 @using (Html.BeginForm("RegisterServiceCase", "NewServiceCase", FormMethod.Post))
 {
     <div class="row">
-        <div class="col-md-12 alert-danger site-alert">
+        <div class="col-md-12 alert-danger site-alert errormessage">
             @Html.ValidationMessageFor(vm => vm.Name)
         </div>
     </div>
@@ -18,7 +18,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12 alert-danger site-alert">@Html.ValidationMessageFor(vm => vm.FlatNr)</div>
+        <div class="col-md-12 alert-danger site-alert errormessage">@Html.ValidationMessageFor(vm => vm.FlatNr)</div>
     </div>
     <div class="row">
         <div class="col-md-2">lägenhetsnummer: </div>
@@ -26,7 +26,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12 alert-danger site-alert">@Html.ValidationMessageFor(vm => vm.ContactEmail)</div>
+        <div class="col-md-12 alert-danger site-alert errormessage">@Html.ValidationMessageFor(vm => vm.ContactEmail)</div>
     </div>
     <div class="row">
         <div class="col-md-2">E-postadress: </div>
@@ -34,10 +34,10 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12 alert-danger  site-alert">@Html.ValidationMessageFor(vm => vm.NewPostMessage)</div>
+        <div class="col-md-12 alert-danger  site-alert errormessage">@Html.ValidationMessageFor(vm => vm.NewPostMessage)</div>
     </div>
     <div>Ärendebeskrivning </div>
     <div>@Html.TextAreaFor(vm => vm.NewPostMessage, 10, 40, new { @class = "form-control" })</div>
 
-    <input type="submit" value="skicka" class="" />
+    <input type="submit" value="skicka" class="btn btn-default" />
 }

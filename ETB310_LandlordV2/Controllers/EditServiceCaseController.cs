@@ -100,11 +100,12 @@ namespace ETB310_LandlordV2.Controllers
                     };
                     posts.Add(serviceCasePost);
                 }
-                vm.Posts = posts.OrderByDescending(post=>post.Date);
+                vm.Date = serviceCase.Date;
                 vm.Name = serviceCase.Name;
                 vm.FlatNr = serviceCase.FlatNr;
                 vm.ContactEmail = serviceCase.ContactEmail;
                 vm.NewPostName = User.Identity.Name;
+                vm.Posts = posts.OrderByDescending(post => post.Date);
             }
             catch (CommunicationException ex)
             {
