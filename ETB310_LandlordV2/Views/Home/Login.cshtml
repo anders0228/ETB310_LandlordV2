@@ -8,12 +8,21 @@
 
 @using (Html.BeginForm())
 {
-    <div>Username:</div>
-    <div>@Html.TextBoxFor(m => m.UserName)</div>
-    <div>Password:</div>
-    <div>@Html.PasswordFor(m => m.Password)</div>
-    <input type="submit" value="Log in" />
-    <div>
-        @Html.ValidationSummary()
+    <div class="row">
+        <div>Namn: </div>
+        <div>@Html.TextBoxFor(vm => vm.UserName, new { @class = "form-control" })</div>
+    </div>
+
+    <div class="row">
+        <div>Lösenord: </div>
+        <div>@Html.TextBoxFor(vm => vm.Password, new { @class = "form-control" })</div>
+    </div>
+    <div class="row">
+        <div class="alert-danger site-alert errormessage">
+            @Html.ValidationSummary()
+        </div>
+    </div>
+    <div class="row">
+        <input type="submit" value="Log in" class="btn btn-default" />
     </div>
 }

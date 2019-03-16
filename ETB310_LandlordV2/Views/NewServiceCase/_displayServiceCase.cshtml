@@ -1,0 +1,12 @@
+﻿@model ETB310_LandlordV2.Models.RegistrationConfirmationViewModel
+
+<p><b>Ärendet ser ut som följer:</b></p>
+<div class="panel panel-info">
+    <div>
+        <b>Namn:</b> @Model.Name<br />
+        <b>Epost:</b> @Model.ContactEmail<br />
+        <b>Lägenhetsnummer:</b> @Model.FlatNr<br />
+        <b>Meddelande:</b>
+    </div>
+    <div>@Model.Message</div>
+</div>

@@ -1,0 +1,60 @@
+﻿
+@model IEnumerable<ETB310_LandlordV2.Models.ServiceCaseViewModel>
+
+@{
+    ViewBag.Title = "Ärenden";
+}
+
+<h2>Ärenden</h2>
+<h3 class="errormessage">@ViewBag.ApplicationError</h3>
+<table class="table">
+    <tr>
+        <th>
+           Ärendenummer
+        </th>
+        <th>
+            Datum
+        </th>
+        <th>
+            Namn
+        </th>
+        <th>
+            Lägenhetsnummer
+        </th>
+        <th>
+           E-post
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            <a href="../EditServiceCase/ShowServiceCase?caseNr=@item.CaseNr">
+                @Html.DisplayFor(modelItem => item.CaseNr)
+            </a>
+        </td>
+        <td>
+            <a href="../EditServiceCase/ShowServiceCase?caseNr=@item.CaseNr">
+                @item.Date.ToString("yyyy-MM-dd")
+            </a>
+        </td>
+        <td>
+            <a href="../EditServiceCase/ShowServiceCase?caseNr=@item.CaseNr">
+                @Html.DisplayFor(modelItem => item.Name)
+            </a>
+        </td>
+        <td>
+            <a href="../EditServiceCase/ShowServiceCase?caseNr=@item.CaseNr">
+                @Html.DisplayFor(modelItem => item.FlatNr)
+            </a>
+        </td>
+        <td>
+            <a href="../EditServiceCase/ShowServiceCase?caseNr=@item.CaseNr">
+                @Html.DisplayFor(modelItem => item.ContactEmail)
+            </a>
+        </td>
+    </tr>
+    }
+</table>

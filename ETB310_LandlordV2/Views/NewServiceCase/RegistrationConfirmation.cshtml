@@ -1,0 +1,11 @@
+﻿@model ETB310_LandlordV2.Models.RegistrationConfirmationViewModel
+@{
+    ViewBag.Title = "Confirmation";
+}
+<h2>Ärendet är registerat</h2>
+<p>Ärendenummer: [@Model.CaseNr].</p>
+
+@{
+    Html.RenderPartial("_displayServiceCase", Model);
+}
+

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace ETB310_LandlordV2.Controllers
 {
@@ -30,21 +31,28 @@ namespace ETB310_LandlordV2.Controllers
             }
             bool validUser = false;
 
-            validUser = System.Web.Security.FormsAuthentication.Authenticate(login.UserName, login.Password);
+            validUser = FormsAuthentication.Authenticate(login.UserName, login.Password);
 
             if (validUser)
             {
                 System.Web.Security.FormsAuthentication.RedirectFromLoginPage(login.UserName, false);
             }
-            ModelState.AddModelError("", "Login not accepted");
+            ModelState.AddModelError("", "Användarnamn eller lösenord är fel.");
             return View();
         }
-        [Authorize]
+
         public ActionResult About()
         {
-            ViewBag.Message = "This page is a placeholder.";
-
+            ViewBag.Message = "";
             return View();
+        }
+
+        [Authorize]
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            FormsAuthentication.RedirectToLoginPage();
+            return RedirectToAction("Login");
         }
     }
 }

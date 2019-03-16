@@ -1,0 +1,70 @@
+@model ETB310_LandlordV2.Models.ServiceCaseViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Ärende @Model.CaseNr</h2>
+<h3 class="errormessage">@ViewBag.ApplicationError</h3>
+
+<p>
+    <b>Skapat datum:</b> @Model.Date.ToString("yyyy-MM-dd")<br />
+    <b>Skapat av:</b> @Model.Name<br />
+    <b>E-post:</b> @Model.ContactEmail<br />
+    <b>Lägenhetssnummer:</b> @Model.FlatNr<br />
+</p>
+<hr />
+<h3>Skriv ett inlägg i ärendet:</h3>
+@using (Html.BeginForm("AddServiceCasePost", "EditServiceCase", FormMethod.Post))
+{
+
+
+    @Html.HiddenFor(vm => vm.NewPostName, new { @class = "form-control" })
+    @Html.HiddenFor(vm => vm.CaseNr, new { @class = "form-control" })
+
+    <div class="row">
+        <div class="col-md-12 alert-danger site-alert errormessage">@Html.ValidationMessageFor(vm => vm.NewPostMessage)</div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">@Html.TextAreaFor(vm => vm.NewPostMessage, 6, 80, new { @class = "form-control col-md-12" })</div>
+    </div>
+    <div>
+        @Html.CheckBoxFor(vm => vm.NewPostPrivate)
+        <b>Internmeddelande</b> (kopia skickas inte till den som skapat ärendet)
+
+    </div>
+
+    <input type="submit" value="skicka" class="" />
+}
+<hr />
+
+<h3>Ärendelogg:</h3>
+<table class="table">
+    <tr>
+        <th>
+            casenumber
+        </th>
+        <th>
+            Meddelande
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Posts)
+    {
+        <tr>
+            <td>
+                @item.Date.ToString("yyyy-MM-dd")<br />
+                @Html.DisplayFor(modelItem => item.Name)<br />
+                @Html.DisplayFor(modelItem => item.ContactEmail)<br />
+                @{var p = item.Private ? "(internmeddelande)" : ""; }
+                @p
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CaseMessage)
+            </td>
+        </tr>
+    }
+</table>
+

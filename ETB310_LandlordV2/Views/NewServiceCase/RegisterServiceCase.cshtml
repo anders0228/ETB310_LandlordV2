@@ -1,0 +1,43 @@
+﻿@model ETB310_LandlordV2.Models.ServiceCaseViewModel
+@{
+    ViewBag.Title = "RegisterServiceCase";
+}
+
+<h2>Anmäl ett serviceärende</h2>
+
+@using (Html.BeginForm("RegisterServiceCase", "NewServiceCase", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12 alert-danger site-alert">
+            @Html.ValidationMessageFor(vm => vm.Name)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">Namn: </div>
+        <div class="col-md-4 ">@Html.TextBoxFor(vm => vm.Name, new { @class = "form-control" })</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 alert-danger site-alert">@Html.ValidationMessageFor(vm => vm.FlatNr)</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">lägenhetsnummer: </div>
+        <div class="col-md-4">@Html.TextBoxFor(vm => vm.FlatNr, new { @class = "form-control" })</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 alert-danger site-alert">@Html.ValidationMessageFor(vm => vm.ContactEmail)</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">E-postadress: </div>
+        <div class="col-md-4">@Html.TextBoxFor(vm => vm.ContactEmail, new { @class = "form-control" })</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 alert-danger  site-alert">@Html.ValidationMessageFor(vm => vm.NewPostMessage)</div>
+    </div>
+    <div>Ärendebeskrivning </div>
+    <div>@Html.TextAreaFor(vm => vm.NewPostMessage, 10, 40, new { @class = "form-control" })</div>
+
+    <input type="submit" value="skicka" class="" />
+}
