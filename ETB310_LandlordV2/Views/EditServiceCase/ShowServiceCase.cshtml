@@ -4,17 +4,17 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Ärende @Model.CaseNr</h2>
+<h2>Ã„rende @Model.CaseNr</h2>
 <h3 class="errormessage">@ViewBag.ApplicationError</h3>
 
 <p>
     <b>Skapat datum:</b> @Model.Date.ToString("yyyy-MM-dd")<br />
-    <b>Skapat av:</b> @Model.Name<br />
+    <b>BerÃ¶rd person:</b> @Model.Name<br />
     <b>E-post:</b> @Model.ContactEmail<br />
-    <b>Lägenhetssnummer:</b> @Model.FlatNr<br />
+    <b>LÃ¤genhetssnummer:</b> @Model.FlatNr<br />
 </p>
 <hr />
-<h3>Skriv ett inlägg i ärendet:</h3>
+<h3>Skriv ett inlÃ¤gg i Ã¤rendet:</h3>
 @using (Html.BeginForm("AddServiceCasePost", "EditServiceCase", FormMethod.Post))
 {
 
@@ -25,12 +25,12 @@
     <div class="row">
         <div class="col-md-12 alert-danger site-alert errormessage">@Html.ValidationMessageFor(vm => vm.NewPostMessage)</div>
     </div>
-    <div class="row">
+    <div class="ro
         <div class="col-md-12">@Html.TextAreaFor(vm => vm.NewPostMessage, 6, 80, new { @class = "form-control col-md-12" })</div>
     </div>
     <div>
         @Html.CheckBoxFor(vm => vm.NewPostPrivate)
-        <b>Internmeddelande</b> (kopia skickas inte till den som skapat ärendet)
+        <b>Internmeddelande</b> (kopia skickas inte till den som skapat Ã¤rendet)
 
     </div>
 
@@ -38,7 +38,7 @@
 }
 <hr />
 
-<h3>Ärendelogg:</h3>
+<h3>Ã„rendelogg:</h3>
 <table class="table">
     <tr>
         <th>
