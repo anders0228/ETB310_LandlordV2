@@ -4,11 +4,11 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Ärende @Model.CaseNr</h2>
+<h2>Ärende [@Model.CaseNr]</h2>
 <h3 class="errormessage">@ViewBag.ApplicationError</h3>
-
 <p>
     <b>Skapat datum:</b> @Model.Date.ToString("yyyy-MM-dd")<br />
+    <b>Skapat av:</b> @Model.Posts.FirstOrDefault().Name<br />
     <b>Berörd person:</b> @Model.Name<br />
     <b>E-post:</b> @Model.ContactEmail<br />
     <b>Lägenhetssnummer:</b> @Model.FlatNr<br />
