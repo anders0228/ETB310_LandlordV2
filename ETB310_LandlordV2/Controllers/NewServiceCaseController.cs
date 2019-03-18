@@ -42,7 +42,7 @@ namespace ETB310_LandlordV2.Controllers
             var post = new ETB310_LandlordV2.ServiceReference1.ServiceCasePost()
             {
                 Message = vm.NewPostMessage,
-                Name = vm.Name,
+                Name =  User.Identity.Name,
                 ContactEmail = vm.ContactEmail
             };
             //  skapa ett ServiceCase
