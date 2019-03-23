@@ -46,10 +46,11 @@ namespace ETB310_LandlordV2.Controllers
                 ContactEmail = vm.ContactEmail
             };
             //  skapa ett ServiceCase
+            Int32.TryParse(vm.FlatNr, out int flatNr);
             var serviceCase = new ServiceReference1.ServiceCase
             {
                 Name = vm.Name,
-                FlatNr = vm.FlatNr,
+                FlatNr = flatNr,
                 ContactEmail = vm.ContactEmail,
             };
 

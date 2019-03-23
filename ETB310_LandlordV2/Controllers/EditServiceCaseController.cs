@@ -22,7 +22,7 @@ namespace ETB310_LandlordV2.Controllers
                     {
                         CaseNr = caseInstance.CaseNr,
                         Date = caseInstance.Date,
-                        FlatNr = caseInstance.FlatNr,
+                        FlatNr = caseInstance.FlatNr.ToString(),
                         Name = caseInstance.Name,
                         ContactEmail = caseInstance.ContactEmail
                     });
@@ -102,7 +102,7 @@ namespace ETB310_LandlordV2.Controllers
                 }
                 vm.Date = serviceCase.Date;
                 vm.Name = serviceCase.Name;
-                vm.FlatNr = serviceCase.FlatNr;
+                vm.FlatNr = serviceCase.FlatNr.ToString();
                 vm.ContactEmail = serviceCase.ContactEmail;
                 vm.NewPostName = User.Identity.Name;
                 vm.Posts = posts.OrderByDescending(post => post.Date);

@@ -11,8 +11,9 @@ namespace ETB310_LandlordV2.Models
         public DateTime Date { get; set; } // sätts automatiskt av webbservicen vid sparning 
 
         [Required(ErrorMessage = "Du måste ange ett lägenhetsnumer.")]
-        [Range(1000, 9999, ErrorMessage = "Lägenhetsnumret måste var fyra siffror.")]
-        public int FlatNr { get; set; } 
+        [StringLength(4, ErrorMessage = "Lägenhetsnumret måste var fyra siffror.", MinimumLength = 4)]
+        [RegularExpression(@"^\d{4}", ErrorMessage = "lägenhetsnumret måste var fyra siffror")]
+        public string FlatNr { get; set; } 
 
         [Required(ErrorMessage = "Du måste ange ett namn.")]
         [StringLength(30, ErrorMessage = "Namn måste vara minst 2 tecken och inte längre än 30 tecken", MinimumLength = 2)]
