@@ -102,6 +102,7 @@ namespace ETB310_LandlordV2.Controllers
                 }
                 vm.Date = serviceCase.Date;
                 vm.Name = serviceCase.Name;
+                vm.CreatedBy = serviceCase.Posts.FirstOrDefault().Name;
                 vm.FlatNr = serviceCase.FlatNr.ToString();
                 vm.ContactEmail = serviceCase.ContactEmail;
                 vm.NewPostName = User.Identity.Name;

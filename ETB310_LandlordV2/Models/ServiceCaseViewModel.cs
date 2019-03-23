@@ -22,8 +22,9 @@ namespace ETB310_LandlordV2.Models
         [Required(ErrorMessage = "Du måste skriva en emailadres.")]
         [StringLength(40, ErrorMessage = "Epostadressen måste vara minst 6 tecken och inte längre än 40 tecken.", MinimumLength = 6)]
         [RegularExpression(@"[\w\.-_]+@([\w\.-_]+\.)+[a-z]+", ErrorMessage = "Detta är inte en giltig e-postadress")]
-        public string ContactEmail { get; set; } 
+        public string ContactEmail { get; set; }
 
+        public string CreatedBy { get; set; }
         public string NewPostName { get; set; } 
         public bool NewPostPrivate { get; set; } 
 
